@@ -4,6 +4,9 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 '''
 from logging import getLogger
@@ -94,7 +97,17 @@ def login_user(request):
         return render(request, 'login.html', {})
 
 
+class RoomList(ListView):
+    template_name = 'room_list.html'
+    model = Room
+    context_object_name = 'rooms'
 
+
+class RoomCreate(LoginRequiredMixin, CreateView):
+    template_name = 'room_create.html'
+    model = Room
+    success_url = reverse_lazy('room_list')
+    fields = '__all__'
 
 #def registered_room(request):
    # return render(request, room == 'registered')

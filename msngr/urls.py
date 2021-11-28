@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.urls import include
+from .views import RoomList, RoomCreate
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -12,5 +13,8 @@ urlpatterns = [
     path('registered', views.room, name='registered_room'),
     path('users', views.users, name='users'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('profile/<int:pk>', views.room,  name='registered'),
+    path('profile/<int:pk>', views.room, name='registered'),
+    path('room_list', RoomList.as_view(), name='room_list'),
+    path('room_create', RoomCreate.as_view(), name='room_create'),
 ]
+
