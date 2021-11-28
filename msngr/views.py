@@ -61,7 +61,19 @@ def getMessages(request, room_id):
     room = Room.objects.get(id=room_id)
 
     messages = Message.objects.filter(room=room)
-    return JsonResponse({"messages":list(messages.values())})
+    messages_response = []
+
+    active_users = []
+
+    for x in messages:
+        json_msg = {'user':x.user.user.username, 'message':x.value, 'datetime':x.date}
+        messages_response.append(json_msg)
+
+    for x in room.users.all():
+        json_msg = {'user':x.user.username}
+        active_users.append(json_msg)
+
+    return JsonResponse({"messages":messages_response, "active_users":active_users})
 
 @login_required
 def users(request):
