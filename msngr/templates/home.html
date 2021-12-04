@@ -102,7 +102,11 @@ body {
     </form>
 </div>
 <!--    <div class="container" align="center"><a href="{% url 'login_user' %}">Login </a></div>   -->
+{% if request.user.is_authenticated %}
+<div class="container" align="center"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></div>
+{% else %}
 <div class="container" align="center"><a href="{% url 'login' %}">Login </a></div>
+{% endif %}
 
 <div class="container" align="center"><a href="{% url 'signup' %}"> Sign Up </a></div>
 
@@ -111,6 +115,5 @@ body {
 <div class="container" align="center"><a href="{% url 'room_create' %}"> Create Room </a></div>
 
 </body>
-
 
 </html>
