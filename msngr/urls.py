@@ -16,7 +16,7 @@ urlpatterns = [
     path('profile/<int:pk>', views.room, name='registered'),
     path('room_list', RoomList.as_view(), name='room_list'),
     path('room_create', RoomCreate.as_view(), name='room_create'),
-    path('room_delete', RoomDelete.as_view(), name='room_delete'),
+    path('room_delete/<int:pk>', RoomDelete.as_view(), name='room_delete'),
     path('signup', SignUpView.as_view(), name='signup'),
 ]
 

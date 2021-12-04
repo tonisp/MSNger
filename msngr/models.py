@@ -9,7 +9,7 @@ class Profile(models.Model):
 
 
 class Room(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, unique=True)
     users = models.ManyToManyField(Profile)
 
 
