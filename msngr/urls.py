@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.urls import include
-from .views import RoomList, RoomCreate
+from .views import RoomList, RoomCreate, RoomDelete, SignUpView
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,5 +16,7 @@ urlpatterns = [
     path('profile/<int:pk>', views.room, name='registered'),
     path('room_list', RoomList.as_view(), name='room_list'),
     path('room_create', RoomCreate.as_view(), name='room_create'),
+    path('room_delete', RoomDelete.as_view(), name='room_delete'),
+    path('signup', SignUpView.as_view(), name='signup'),
 ]
 

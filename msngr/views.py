@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import SignUpForm
 
 '''
 from logging import getLogger
@@ -108,6 +109,19 @@ class RoomCreate(LoginRequiredMixin, CreateView):
     model = Room
     success_url = reverse_lazy('room_list')
     fields = '__all__'
+
+
+class RoomDelete(LoginRequiredMixin, DeleteView):
+    template_name = 'room_delete.html'
+    model = Room
+    success_url = reverse_lazy('room_list')
+    fields = '__all__'
+
+
+class SignUpView(CreateView):
+    template_name = 'create_profile.html'
+    success_url = reverse_lazy('room_list')
+    form_class = SignUpForm
 
 #def registered_room(request):
    # return render(request, room == 'registered')
