@@ -17,14 +17,15 @@ body {
 
 <body>
 
+<ul>
 {% for room in object_list %}
 
-
     <li>
-        {{ room.name }}<br>
+        <a href="{% url 'room' room.name %}"> {{room.name}}</a>
     </li>
 
 {% endfor %}
+</ul>
 
 </body>
 

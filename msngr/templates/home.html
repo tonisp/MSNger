@@ -63,7 +63,7 @@ body {
     <h2>MSNgr</h2>
 </div>
 
-
+<!--
 <div class="container" align="center">
     <style>
     input[type=text], select {
@@ -101,7 +101,9 @@ body {
         <input type="submit" value="Enter Room">
     </form>
 </div>
+-->
 <!--    <div class="container" align="center"><a href="{% url 'login_user' %}">Login </a></div>   -->
+
 {% if request.user.is_authenticated %}
 <div class="container" align="center"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></div>
 {% else %}
