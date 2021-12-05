@@ -64,7 +64,7 @@ def send(request):
 def getMessages(request, room_id):
     room = Room.objects.get(id=room_id)
 
-    messages = Message.objects.filter(room=room)
+    messages = Message.objects.filter(room=room).order_by('-id')[:100:-1]
     messages_response = []
 
     active_users = []
